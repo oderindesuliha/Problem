@@ -8,13 +8,9 @@ public class Person {
     public Person() {
         problems = new ArrayList<>();
     }
-    
-    public Problem createProblem(String name, ProblemType type) {
-        Problem problem = new Problem(name, type);
-        return problem;
-    }
 
-    public void addProblem(Problem problem) {
+    public void addProblem(String name, ProblemType type) {
+        Problem problem = new Problem(name, type);
         problems.add(problem);
     }
 

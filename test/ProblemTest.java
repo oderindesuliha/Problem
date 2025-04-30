@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ProblemTest {
 
     Problem problem;
+
     @BeforeEach
     public void setUp() {
         problem = new Problem("Debt of 5m", ProblemType.FINANCIAL);
@@ -17,25 +18,24 @@ public class ProblemTest {
     public void testThatThereIsProblem() {
         assertEquals("Debt of 5m", problem.getName());
         assertEquals(ProblemType.FINANCIAL, problem.getType());
-        assertFalse(problem.isSolved());
+        assertEquals(1, problem.getId());
     }
 
     @Test
     public void testThatProblemIsSolved() {
-        problem.solved(true);
-        assertTrue(problem.isSolved());
+        problem.solved();
+        assertTrue(problem.solved());
     }
 
     @Test
     public void testThatProblemIsNotSolved() {
-        problem.solved(false);
-        assertFalse(problem.isSolved());
+        assertFalse(problem.solved());
     }
 
     @Test
     public void testThatOneProblemIsSolvedAndOneIsNotSolved() {
         Problem problem2 = new Problem("Failed a class test", ProblemType.EDUCATION);
-        problem.solved(true);
+        problem.solved();
 
         assertTrue(problem.isSolved());
         assertFalse(problem2.isSolved());
@@ -52,6 +52,4 @@ public class ProblemTest {
         assertEquals(3, problem2.getId());
         assertEquals(4, problem3.getId());
     }
-
 }
-
